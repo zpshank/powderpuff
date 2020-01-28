@@ -12,10 +12,8 @@ class SampleGame : public pp::Game
     private:
         int game_width;
         int game_height;
-        bool assets_loaded;
         void update() override;
         void render(double distance_between_ticks) override;
-        void loadAssets();
 
         
 };

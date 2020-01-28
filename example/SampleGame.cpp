@@ -7,7 +7,6 @@ namespace chrono = std::chrono;
 SampleGame::SampleGame()
     :game_width(200)
      , game_height(300)
-     , assets_loaded(false)
 {
 }
 
@@ -23,17 +22,6 @@ void SampleGame::start()
 
 void SampleGame::update()
 {
-    if(!assets_loaded)
-    {
-        loadAssets();
-    }
-}
-
-void SampleGame::loadAssets()
-{
-    std::string base_path = SDL_GetBasePath();
-    asset_store.addImage(renderer, "logo", base_path + "logo.png");
-    assets_loaded = true;
 }
 
 void SampleGame::render(double distance_between_ticks)

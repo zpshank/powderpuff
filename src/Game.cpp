@@ -27,6 +27,7 @@ bool Game::init(const std::string window_title
         , const int & window_flags
         , const int & game_width, const int & game_height)
 {
+
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
         std::cout << "Unable to initialize SDL:" << SDL_GetError() << std::endl;
@@ -39,6 +40,7 @@ bool Game::init(const std::string window_title
         std::cout << "Unable to initialize SDL Image: " << IMG_GetError() << std::endl; 
         return false;
     }
+
 
     window = SDL_CreateWindow(window_title.c_str()
             , SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED
@@ -88,20 +90,8 @@ void Game::run()
             switch(event.type)
             {
                 case SDL_QUIT:
-                    std::cout << "Quit Called!" << std::endl;
                     is_running = false;
                     break;
-                case SDL_WINDOWEVENT:
-                    // TODO figure out a better way to fix this bug on macOS.
-                    // This prevents pixel stretching on window move.
-                    if(event.window.event == SDL_WINDOWEVENT_MOVED)
-                    {
-                        int window_width;
-                        int window_height;
-                        SDL_GetWindowSize(window, &window_width, &window_height);
-                        SDL_SetWindowSize(window, window_width + 1, window_height + 1);
-                        SDL_SetWindowSize(window, window_width, window_height);
-                    }
             }
         }
 
