@@ -19,21 +19,23 @@ set(powderpuff_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/${INC}")
 add_library(powderpuff STATIC)
 target_sources(powderpuff
     PUBLIC 
-	${INC}/Game.h
-	${INC}/AssetStore.h
-	${SRC}/Game.cpp
-	${SRC}/AssetStore.cpp
+        ${INC}/Game.h
+        ${INC}/AssetStore.h
+        ${INC}/Sprite.h
+        ${SRC}/Game.cpp
+        ${SRC}/AssetStore.cpp
+        ${SRC}/Sprite.cpp
 )
 target_include_directories(powderpuff
     PUBLIC 
-	${INC}
-	${SDL2_INCLUDE_DIRS}
-	${SDL2_IMAGE_INCLUDE_DIRS}
+        ${INC}
+        ${SDL2_INCLUDE_DIRS}
+        ${SDL2_IMAGE_INCLUDE_DIRS}
 )
 target_link_libraries(powderpuff
     PUBLIC 
-	${SDL2_LIBRARY}
-	${SDL2_IMAGE_LIBRARIES}
+        ${SDL2_LIBRARY}
+        ${SDL2_IMAGE_LIBRARIES}
 )
 
 add_subdirectory(example)

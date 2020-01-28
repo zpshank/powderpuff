@@ -11,3 +11,8 @@ target_link_libraries(example
 	${SDL2_LIBRARY}
         ${SDL2_IMAGE_LIBRARIES}
 )
+add_custom_command(TARGET example POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        ${CMAKE_CURRENT_SOURCE_DIR}/assets/face.png
+        $<TARGET_FILE_DIR:example>
+)
