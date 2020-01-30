@@ -53,7 +53,7 @@ bool Game::init(const std::string window_title
         return false;
     }
 
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 
     // Setup Game Width and Height if given
     if (game_width != -1 && game_height != -1)

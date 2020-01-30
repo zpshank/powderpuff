@@ -9,18 +9,18 @@ namespace powderpuff {
             explicit Sprite(){};
             bool loadTexture(SDL_Texture* texture, const int & total_frame_count = 1);
             bool draw(SDL_Renderer* renderer, const int & x, const int & y, const int & frame_count = 0);
-            int getTotalFrameCount();
-            double getRotation();
+            int totalFrameCount();
+            double rotation();
             void setRotation(double rotation);
-            int getFrameWidth();
-            int getFrameHeight();
+            int frameWidth();
+            int frameHeight();
 
         private:
-            SDL_Texture* texture;
-            int total_frame_count;
-            int frame_width;
-            int frame_height;
-            double rotation;
+            SDL_Texture* texture_;
+            int total_frame_count_;
+            int frame_width_;
+            int frame_height_;
+            double rotation_;
     };
 }
 #endif

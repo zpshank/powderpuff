@@ -5,7 +5,7 @@
 namespace chrono = std::chrono;
 
 SampleGame::SampleGame()
-    :game_width(200)
+    :game_width(250)
      , game_height(200)
 {
 }
@@ -24,7 +24,7 @@ void SampleGame::loadAssets()
 {
     std::string base_path(SDL_GetBasePath());
     asset_store.addImage(renderer, "face", base_path + std::string("face.png"));
-    face.loadTexture(asset_store.getImage("face"));
+    face.loadTexture(asset_store.image("face"));
 
     assets_loaded = true;
 }
@@ -39,13 +39,13 @@ void SampleGame::update()
     face_x += face_x_speed;
     face_y += face_y_speed;
 
-    if(face_x + face.getFrameWidth() > game_width
+    if(face_x + face.frameWidth() > game_width
         || face_x < 0)
     {
         face_x_speed *= -1;
     }
 
-    if(face_y + face.getFrameHeight() > game_height
+    if(face_y + face.frameHeight() > game_height
         || face_y < 0)
     {
         face_y_speed *= -1;
@@ -59,8 +59,8 @@ void SampleGame::render(double distance_between_ticks)
     SDL_RenderClear(renderer);
 
     SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-    SDL_Rect rectangle {0, 0, 200, 200};
-    SDL_RenderFillRect(renderer, &rectangle);
+    SDL_Rect background{0, 0, game_width, game_height};
+    SDL_RenderFillRect(renderer, &background);
 
     face.draw(renderer, face_x + (face_x_speed * distance_between_ticks), face_y + (face_y_speed * distance_between_ticks));
 

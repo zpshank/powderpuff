@@ -14,42 +14,42 @@ bool Sprite::loadTexture(SDL_Texture* texture, const int & total_frame_count)
         return false;
     }
     
-    this->frame_width = texture_width / total_frame_count;
-    this->frame_height = texture_height;
-    this->total_frame_count = total_frame_count;
-    this->texture = texture;
+    this->frame_width_ = texture_width / total_frame_count;
+    this->frame_height_ = texture_height;
+    this->total_frame_count_ = total_frame_count;
+    this->texture_ = texture;
 
     return true;
 }
 
 bool Sprite::draw(SDL_Renderer* renderer, const int & x, const int & y, const int & frame_count)
 {
-    if (frame_count > total_frame_count)
+    if (frame_count > total_frame_count_)
     {
         std::cout << "Frame count " << frame_count 
-            << " is larger than the available number of frames (" << total_frame_count << ")" << std::endl;
+            << " is larger than the available number of frames (" << total_frame_count_ << ")" << std::endl;
         return false;
     }
 
-    SDL_Rect source { frame_count * frame_width, 0, frame_width, frame_height };
-    SDL_Rect dest { x, y, frame_width, frame_height };
-    if(SDL_RenderCopyEx(renderer, texture, &source, &dest, rotation, NULL, SDL_FLIP_NONE) != 0)
+    SDL_Rect source { frame_count * frame_width_, 0, frame_width_, frame_height_ };
+    SDL_Rect dest { x, y, frame_width_, frame_height_ };
+    if(SDL_RenderCopyEx(renderer, texture_, &source, &dest, rotation_, NULL, SDL_FLIP_NONE) != 0)
     {
-        std::cout << "Unable to render sprite" << std::endl;
+        std::cout << "Unable to render sprite: " << SDL_GetError() << std::endl;
         return false;
     }
 
     return true;
 }
 
-int Sprite::getTotalFrameCount()
+int Sprite::totalFrameCount()
 {
-    return total_frame_count;
+    return total_frame_count_;
 }
 
-double Sprite::getRotation()
+double Sprite::rotation()
 {
-    return rotation;
+    return rotation_;
 }
 
 void Sprite::setRotation(double rotation)
@@ -57,12 +57,12 @@ void Sprite::setRotation(double rotation)
     rotation = rotation;
 }
 
-int Sprite::getFrameWidth()
+int Sprite::frameWidth()
 {
-    return frame_width;
+    return frame_width_;
 }
 
-int Sprite::getFrameHeight()
+int Sprite::frameHeight()
 {
-    return frame_height;
+    return frame_height_;
 }

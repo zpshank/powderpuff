@@ -12,7 +12,7 @@ AssetStore::~AssetStore()
     }
 }
 
-bool AssetStore::addImage(SDL_Renderer* renderer, std::string asset_name, std::string asset_path)
+bool AssetStore::addImage(SDL_Renderer* renderer, const std::string & asset_name, const std::string & asset_path)
 {
     SDL_Surface* surface = IMG_Load(asset_path.c_str());
     if (surface == NULL)
@@ -31,7 +31,7 @@ bool AssetStore::addImage(SDL_Renderer* renderer, std::string asset_name, std::s
     return true;
 }
 
-SDL_Texture* AssetStore::getImage(std::string asset_name)
+SDL_Texture* AssetStore::image(const std::string & asset_name)
 {
     auto texture_iterator = images.find(asset_name);
     return (texture_iterator == images.end()) ? NULL : texture_iterator->second;
