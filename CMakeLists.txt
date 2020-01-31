@@ -4,7 +4,7 @@ endif()
 
 cmake_minimum_required(VERSION 3.11)
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/")
 
 project(powderpuff CXX C)
 
@@ -12,8 +12,8 @@ find_package(SDL2 REQUIRED)
 find_package(SDL2_image REQUIRED)
 find_package(SDL2_ttf REQUIRED)
 
-set(SRC "${CMAKE_SOURCE_DIR}/src")
-set(INC "${CMAKE_SOURCE_DIR}/include")
+set(SRC "${CMAKE_CURRENT_SOURCE_DIR}/src")
+set(INC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 set(powderpuff_INCLUDE_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/${INC}")
 
