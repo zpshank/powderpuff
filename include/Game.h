@@ -1,5 +1,6 @@
 #ifndef _GAME_H_
 #define _GAME_H_
+#define SDL_MAIN_HANDLED
 #include "SDL.h"
 #include "AssetStore.h"
 #include <string>

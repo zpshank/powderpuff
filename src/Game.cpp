@@ -27,7 +27,7 @@ bool Game::init(const std::string window_title
         , const int & window_flags
         , const int & game_width, const int & game_height)
 {
-
+    SDL_SetMainReady();
     if(SDL_Init(SDL_INIT_EVERYTHING) != 0)
     {
         std::cout << "Unable to initialize SDL:" << SDL_GetError() << std::endl;
