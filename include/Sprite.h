@@ -6,7 +6,12 @@ namespace powderpuff {
     class Sprite
     {
         public:
-            explicit Sprite(){};
+            explicit Sprite()
+                :total_frame_count_(1)
+                , frame_width_(1)
+                , frame_height_(1)
+                , rotation_(0)
+            {};
             bool loadTexture(SDL_Texture* texture, const int & total_frame_count = 1);
             bool draw(SDL_Renderer* renderer, const int & x, const int & y, const int & frame_count = 0);
             int totalFrameCount();

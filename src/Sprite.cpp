@@ -24,6 +24,11 @@ bool Sprite::loadTexture(SDL_Texture* texture, const int & total_frame_count)
 
 bool Sprite::draw(SDL_Renderer* renderer, const int & x, const int & y, const int & frame_count)
 {
+    if (!texture_)
+    {
+        return false;
+    }
+
     if (frame_count > total_frame_count_)
     {
         std::cout << "Frame count " << frame_count 

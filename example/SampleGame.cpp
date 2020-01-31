@@ -2,8 +2,6 @@
 #include "SDL.h"
 #include <iostream>
 
-namespace chrono = std::chrono;
-
 SampleGame::SampleGame()
     :game_width(250)
      , game_height(200)
@@ -54,6 +52,10 @@ void SampleGame::update()
 
 void SampleGame::render(double distance_between_ticks)
 {
+    if (!assets_loaded)
+    {
+        return;
+    }
     // Clear Screen
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
