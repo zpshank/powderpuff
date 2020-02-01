@@ -2,6 +2,8 @@
 #include "SDL_image.h"
 #include <iostream>
 
+using namespace powderpuff;
+
 AssetStore::~AssetStore()
 {
     for(auto image_iterator : images)
